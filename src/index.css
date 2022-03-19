@@ -1,0 +1,16 @@
+.first{
+  background-color: blue;
+  font-size: 3em;
+}
+.div{
+  border: 2px solid blue;
+  height: 70px;
+  width: 70px;
+  font-size: 3em;
+  margin: 10px;
+  padding: 20px;
+}
+button{
+  height: 30px;
+  color: blue;
+}
