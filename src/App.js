@@ -1,139 +1,66 @@
-//import logo from './logo.svg';
-import './App.css';
-// import Button from "./component/Button";
-// import AddStudent from "./component/AddStudent";
-// function App() {
-//   return (
-//    <>
-//    <Button title='Edit' color='btn btn-success'/>
-//    <Button title='Delete' color='btn btn-danger'/>
-//    <Button title='rusticate'color='btn btn-warning'/>
-//    </> 
-//   );
-// }
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_bln/ank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//     // <>Hello world
-//     // {Math.random() }
-//     // </>
-//   );
-// }
+import axios from "axios"
+import React,{useState} from 'react'
 
-// const App = () =>{
-//   const myStyle={
-//     color:"white",
-//   }
-//   const gender ="male";
-//   const name ="Chandrasura";
-//   const url ="https://www.google.com";
-//   const numer = Math.floor(Math.random() * 11);
-//   const doSomething =()=>{
-//     alert (`hello`)
-//   }
-//   const random = ()=>{ (numer<5)?
-//       alert(`small number`): alert(`big number`);
-//     window.location.reload()
-//   }
-//   return(
-//     <>
-//     <h1 style={myStyle} className="first">Hello {name}</h1>
-//     <h1 className={gender=="female"? "text-primary": "text-danger"}>Hello {name}</h1>
-//     <a href={url}>link to google</a><br />
-//     <button onClick={doSomething}>Click me</button><br />
-//     <div className="div">{numer}</div>
-//     <button onClick={random}>Random</button>
-//     </>
-//   )
-// }
-
-// export default App;
-// import { useState } from "react";
-// const App = () =>{
-
-// // const handlefirstname = (e)=>{
-// const [allStudents, setallStudents] = useState([]);
-//   setfirstname(e.target.value)
-// console.log(firstname);
-// };
-import { useState } from "react";
-import AddStudent from "./component/AddStudent";
-// import Button from "./components/Button";
-import ListStudent from "./component/ListStudent";
 const App = () =>{  
-
-const [allStudents, setallStudents] = useState([]);
-const [editMode, seteditMode] = useState(false)
-const [currentIndex, setcurrentIndex] = useState(0)
-// const handlefirstname = (e)=>{
-//   setfirstname(e.target.value)
-// console.log(firstname);
-// };
-
-const addStudent=(newStudent)=>
-{
-  setallStudents([...allStudents,newStudent])
-} 
-
-const deleteStudent = (index) =>
-{
-  let newAllStudents = [...allStudents]
-  let updatedStudents = newAllStudents.filter((val,ind)=>( ind!=index))
-  setallStudents(updatedStudents)
-}
-
-const editStudent= (index)=>{
-  seteditMode(true)
-  let newAllStudents = [...allStudents]
-  let currentStudent = newAllStudents[index]
-  let {firstname, lastname, email, password}=currentStudent
-  setcurrentIndex(index)
-}
-
-// const updateDetails=(newStudent)=>
-// {
-//   let newAllStudents = [...allStudents]
-//   // let changedDetails = {firstname, lastname, email, password}
-//   // newAllStudents[currentIndex]=changedDetails
-//   newAllStudents[currentIndex]=newStudent
-//   setallStudents(newAllStudents)
-//   seteditMode(false)
-// }
-
-  return(
-    <div>
-      <div className="container-fluid">
-        <div className="row">
-        <div className="col-6 border-right">
-          <AddStudent addStudent={addStudent}></AddStudent>
+  const [data,setdata] = useState({})
+  const [location,setlocation]=useState('')
+  const API =`https://api.openweathermap.org/data/2.5/weather?q=${location} &units=metric&appid=2eeb7c63611a0bc3d2874b1069b97c0e`
+  const looklocation =(event)=>{
+    if (event.key=='Enter'){
+      axios.get(API).then((response)=>{
+        setdata(response.data)
+        console.log(response.data)
+      })
+    }
+  }
+    return(
+      <>
+      <div className={( typeof data.main !='undefined')?((data.weather[0].main='clear')?"bg-success":'bg'):'bg-success'}>
+        <div className="top">
+        <div className="search_box">
+          <input type="text" name=""onKeyPress={looklocation} value={location} onChange={event=>setlocation(event.target.value)}className="form-control"  placeholder="Search Location" id="" />
         </div>
-
-        <div className="col-6 vh-100">
-            <ListStudent allStudents={allStudents} deleteStudent={deleteStudent}></ListStudent>
+        <div className="city">
+          {data.sys?<h4>{data.sys.country}</ h4>:null}
+          {data.name?<h3>{data.name}</h3>:null}
+        </div>
+        <div className="temp">
+          {data.main?<p className="num">{data.main.temp.toFixed()}°C</p>:null}
           </div>
-         
+          <div className="description">
+            {data.weather?<p>{data.weather[0].main}</p>:null}
         </div>
+        </div> 
+      {data.name != undefined &&
+        <div className="down">
+            <div className="feeling">
+            {data.main?<p>{data.main.feels_like}°C</p>:null}
+            <p>Feels Like</p>
+            </div>
+            <div className="humidity">
+            {data.main?<p>{data.main.humidity}%</p>:null}
+            <p>Humidity</p>
+            </div>
+           <div className="humility">
+           {data.wind?<p>{data.wind.speed} MPH</p>:null}
+            <p>Winds</p>
+           </div>
+        </div>
+      }
+         
       </div>
-    </div>
-  )
-}
+      </>
+    )
+ }
+  
+  export default App;
+  
+  
+  
 
-export default App;
+
+
+
 
 
 
