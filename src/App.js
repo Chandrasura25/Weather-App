@@ -15,10 +15,10 @@ const App = () =>{
   }
     return(
       <>
-      <div className={( typeof data.main !='undefined')?((data.weather[0].main='clear')?"bg-success":'bg'):'bg-success'}>
+      <div className={( typeof data.main !='undefined')?((data.weather[0].description='broken clouds')?"bg-success":'bg'):'bg-success'}>
         <div className="top">
         <div className="search_box">
-          <input type="text" name=""onKeyPress={looklocation} value={location} onChange={event=>setlocation(event.target.value)}className="form-control"  placeholder="Search Location" id="" />
+          <input type="text" name=""onKeyPress={looklocation} value={location} onChange={event=>setlocation(event.target.value)} className="form-control pt-2"  placeholder="Search Location" id="" />
         </div>
         <div className="city">
           {data.sys?<h4>{data.sys.country}</ h4>:null}
@@ -28,7 +28,7 @@ const App = () =>{
           {data.main?<p className="num">{data.main.temp.toFixed()}°C</p>:null}
           </div>
           <div className="description">
-            {data.weather?<p>{data.weather[0].main}</p>:null}
+            {data.weather?<p>{data.weather[0].description}</p>:null}
         </div>
         </div> 
       {data.name != undefined &&
