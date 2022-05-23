@@ -1,66 +1,49 @@
 body{
   margin:0;
   padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
-.bg-success{
-  background-image: url(../src/asset/daytime.jfif);
+.bg-1{
+  background-image: url(../src/asset/pexels-brett-sayles-912364.jpg);
   background-size: cover;
-  width: 100vw;
-  display: block;
-  height:100vh;
-  position: absolute;
-  animation:bgsuccess 15s infinite;
+  min-height:100vh;
+  animation:bgsuccess 10s ease-in-out infinite;
 }
 @keyframes bgsuccess {
-  0%   { background-image: url(../src/asset/daytime.jfif);}
-  25%  { background-image: url(../src/asset/download2.jfif);}
-  50%  { background-image: url(../src/asset/download1.jfif);}
-  100% { background-image: url(../src/asset/daytime.jfif);}
+  0%   { background-image: url(../src/asset/pexels-brett-sayles-912364.jpg);}
+  25%  { background-image: url(../src/asset/pexels-pixabay-531756.jpg);}
+  50%  { background-image: url(../src/asset/pexels-tahir-shaw-186980.jpg);}
+  100% { background-image: url(../src/asset/pexels-ithalu-dominguez-907485.jpg);}
 }
 .bg{
-  background-image: url(../src/asset/download1.jfif);
+  background-image: url(../src/asset/pexels-josh-sorenson-391522.jpg);
   background-size: cover;
-  width: 100vw;
-  display: block;
-  height:100vh;
-  position: absolute;
-   animation:bg 10s infinite;
+  min-height:100vh;
+  animation:bg 10s ease-in-out infinite;
 }
 @keyframes bg {
-  0%   { background-image: url(../src/asset/night.jfif);}
-  25%  { background-image: url(../src/asset/download.jfif);}
-  50%  { background-image: url(../src/asset/night2.jfif);}
-  100% { background-image: url(../src/asset/night.jfif);}
+  0%   { background-image: url(../src/asset/pexels-josh-sorenson-391522.jpg);}
+  25%  { background-image: url(../src/asset/pexels-simon-berger-1183099.jpg);}
+  50%  { background-image: url(../src/asset/pexels-adam-kontor-325117.jpg);}
+  100% { background-image: url(../src/asset/pexels-arnie-chou-1229042.jpg);}
 }
 .form-control{
-  width:35vw;
-  display: block;
-  height:35px;
-  margin-left: 330px;
-  background-color: beige;
+  height:40px;
   font-weight: 900;
   font-size: 20px;
-  box-shadow: 0px 5px rgba(0,0, 0,0.3) ;
+  box-shadow: 0px 5px rgba(0,0, 0,0.5) ;
   border-radius: 0px  0px 15px 15px;
-}
-.form-control:focus{
-  background-color: antiquewhite;
- border: 1px solid blue;
 }
 .city{
   height: 10px;
   width: 10px;
   font-size: 1em;
-  display: block;
-  margin:100px 25em;
 }
 .temp{
   height: 10px;
   width: 10px;
-  display: block;
   font-size: 3em;
-  margin: 10px;
-  margin: -60px 9.5em;
 }
 .num{
 margin-top: 20px;
@@ -68,20 +51,20 @@ margin-top: 20px;
 .description{
   position: relative;
   font-size: 25px;
-  margin-left:37em;
   margin-top: 7em;
   transform-origin: 0.0;
   transform: rotate(270deg);
 }
 .down{
-  margin-top: 10.3em;
+  margin-top: 1em;
   display:flex;
   font-size: 20px;
   justify-content:space-evenly;
   text-align: center;
-  width: 98%;
-  border-radius: 12px;
-  background-color:rgba(255,255, 225,0.1);
+  width: 96%;
+  backdrop-filter: blur(5px);
+  box-shadow:0 25px 45px rgba(0, 0, 0, 0.1);
+  border:1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.3);
   margin:fit-content; 
-
 }

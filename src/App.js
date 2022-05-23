@@ -15,24 +15,28 @@ const App = () =>{
   }
     return(
       <>
-      <div className={( typeof data.main !='undefined')?((data.weather[0].description='broken clouds')?"bg-success":'bg'):'bg-success'}>
+      <body className={(typeof data.main !='undefined')?((data.weather[0].description=='broken clouds')?"bg-1":'bg'):'bg-1'}>
+        <div className="col-12 mx-auto">
         <div className="top">
         <div className="search_box">
-          <input type="text" name=""onKeyPress={looklocation} value={location} onChange={event=>setlocation(event.target.value)} className="form-control pt-2"  placeholder="Search Location" id="" />
+          <input type="text" name=""onKeyPress={looklocation} value={location} onChange={event=>setlocation(event.target.value)} className="form-control mx-auto w-50" placeholder="Search Location" id="" />
         </div>
-        <div className="city">
+        </div>
+        <div className="col-12 col-sm-12 display-4">
+        <div className="city m-5">
           {data.sys?<h4>{data.sys.country}</ h4>:null}
           {data.name?<h3>{data.name}</h3>:null}
         </div>
-        <div className="temp">
+        <div className="temp m-5">
           {data.main?<p className="num">{data.main.temp.toFixed()}°C</p>:null}
           </div>
-          <div className="description">
+          <div className="description lead fw-bold mx-2">
             {data.weather?<p>{data.weather[0].description}</p>:null}
+        </div>
         </div>
         </div> 
       {data.name != undefined &&
-        <div className="down">
+        <div className="down mx-auto col-12 col-sm-12 mt-5">
             <div className="feeling">
             {data.main?<p>{data.main.feels_like}°C</p>:null}
             <p>Feels Like</p>
@@ -48,7 +52,7 @@ const App = () =>{
         </div>
       }
          
-      </div>
+      </body>
       </>
     )
  }
