@@ -15,11 +15,11 @@ const App = () =>{
   }
     return(
       <>
-      <body className={(typeof data.main !='undefined')?((data.weather[0].description=='broken clouds')?"bg-1":'bg'):'bg-1'}>
+      <body className={(typeof data.main !='undefined')?((data.weather[0].description=='broken clouds')?"bg-1":'bg text-white'):'bg-1'}>
         <div className="col-12 mx-auto">
         <div className="top">
         <div className="search_box">
-          <input type="text" name=""onKeyPress={looklocation} value={location} onChange={event=>setlocation(event.target.value)} className="form-control mx-auto w-50" placeholder="Search Location" id="" />
+          <input type="text" name=""onKeyPress={looklocation} value={location} onChange={event=>setlocation(event.target.value)} className="form-control mx-auto w-50" placeholder="Search Location" id=""/>
         </div>
         </div>
         <div className="col-12 col-sm-12 display-4">
